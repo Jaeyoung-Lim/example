@@ -23,6 +23,10 @@ add_executable(fixedwing_training_benchmark src/fixedwing_training.cpp)
 target_compile_definitions(fixedwing_training_benchmark PRIVATE BENCHMARK)
 target_link_libraries(fixedwing_training_benchmark PRIVATE RLtools::RLtools)
 
+# Dynamics test for fixed-wing (zero control test)
+add_executable(fixedwing_dynamics_test src/fixedwing_dynamics_test.cpp)
+target_link_libraries(fixedwing_dynamics_test PRIVATE RLtools::RLtools)
+
 
 
 if(NOT MSVC AND CMAKE_BUILD_TYPE STREQUAL "Release")

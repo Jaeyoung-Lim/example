@@ -88,9 +88,10 @@ struct FixedwingParameters {
     constexpr static T max_elevator = 30.4;     // degrees (0.53 rad)
     constexpr static T max_rudder = 30.4;       // degrees (0.53 rad)
     
-    // Thrust parameters (from motor model lines 569-587)
-    // Max thrust = motor_constant * max_speed^2 = 8.54858e-06 * 3500^2 ≈ 104.6 N
-    constexpr static T max_thrust = 104.6;      // N (maximum thrust)
+    // Thrust parameters (tuned for RL training)
+    // Original from motor model: motor_constant * max_speed^2 = 8.54858e-06 * 3500^2 ≈ 104.6 N
+    // Reduced for trim at ~22 m/s cruise (drag ~2.9N, zero action → 1.5N for 15 m/s cruise)
+    constexpr static T max_thrust = 3.0;      // N (maximum thrust, tuned for trim conditions)
     constexpr static T thrust_offset_x = 0.3;   // m (propeller position, line 104)
     constexpr static T thrust_offset_z = 0.0;   // m (at CG height)
     
